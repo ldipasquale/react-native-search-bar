@@ -175,6 +175,19 @@ public class RNSearchBarManager extends SimpleViewManager<SearchView> {
         }
     }
 
+    @ReactProp(name = "underline")
+    public void setUnderline(SearchView searchView, boolean underline) {
+        if (!underline) {
+            View searchPlateView = searchView.findViewById(
+                searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null)
+            );
+
+            if (searchPlateView != null) {
+                searchPlateView.setBackgroundColor(android.R.color.transparent);
+            }
+        }
+    }
+
     @Nonnull
     @Override
     protected SearchView createViewInstance(@Nonnull ThemedReactContext reactContext) {
